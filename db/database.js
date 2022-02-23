@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 
-const ConnectDB = async () => {
-  const con = await mongoose.connect(
-    "mongodb+srv://coded:coded@cluster0.cyf5q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+const connectDB = async () => {
+  const conn = await mongoose.connect(
+    "mongodb+srv://coded:coded@cluster0.cyf5q.mongodb.net/myDatabase?retryWrites=true&w=majority",
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    }
   );
-  //addd the link
+  console.log(`mongo connected: ${conn.connection.host}`);
 };
 
-module.exports = ConnectDB;
+module.exports = connectDB;
